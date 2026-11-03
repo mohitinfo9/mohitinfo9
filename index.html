@@ -22,13 +22,13 @@
       touch-action: pan-y;
     }
 
-    /* BGMI Style Ultra Gyro Dynamic Background Wrapper */
+    /* BGMI Style Gyro Dynamic Background Wrapper - Fixed to prevent black screen overflow */
     .bg-wrapper {
       position: fixed;
-      top: -30%;
-      left: -30%;
-      width: 160vw;
-      height: 160vh;
+      top: -5%;
+      left: -5%;
+      width: 110vw;
+      height: 110vh;
       z-index: 1;
       pointer-events: none;
       overflow: hidden;
@@ -44,7 +44,7 @@
       background-position: center center;
       background-repeat: no-repeat;
       filter: brightness(0.7) contrast(1.1);
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .bg-overlay {
@@ -1191,13 +1191,13 @@ Contact Here 👉 <a href="https://t.me/OFFICIALJADU1" target="_blank">@OFFICIAL
       }
     }
 
-    // BGMI Style Full Gyro Engine with high responsiveness
+    // Controlled Gyro & Mouse Movement Engine (Safe boundaries to avoid black screen)
     let currentX = 0, currentY = 0;
     let targetX = 0, targetY = 0;
 
     function renderEngine() {
-      currentX += (targetX - currentX) * 0.25;
-      currentY += (targetY - currentY) * 0.25;
+      currentX += (targetX - currentX) * 0.2;
+      currentY += (targetY - currentY) * 0.2;
       wrapper.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
       requestAnimationFrame(renderEngine);
     }
@@ -1205,12 +1205,12 @@ Contact Here 👉 <a href="https://t.me/OFFICIALJADU1" target="_blank">@OFFICIAL
 
     function handleOrientation(e) {
       if (e.gamma !== null && e.beta !== null) {
-        const tiltX = Math.max(-60, Math.min(60, e.gamma));
-        const tiltY = Math.max(-60, Math.min(60, e.beta - 30));
+        // Limited tilt range to keep background strictly inside view
+        const tiltX = Math.max(-25, Math.min(25, e.gamma));
+        const tiltY = Math.max(-25, Math.min(25, e.beta - 30));
 
-        // BGMI like intense gyro sensitivity multiplier
-        targetX = tiltX * 6.0;
-        targetY = tiltY * 6.0;
+        targetX = tiltX * 1.5;
+        targetY = tiltY * 1.5;
       }
     }
 
@@ -1303,7 +1303,7 @@ Contact Here 👉 <a href="https://t.me/OFFICIALJADU1" target="_blank">@OFFICIAL
     function fallbackCopyText(text) {
       const textArea = document.createElement("textarea");
       textArea.value = text;
-      textArea.style.position = "fixed";  // Avoid scrolling to bottom
+      textArea.style.position = "fixed";
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
@@ -1358,8 +1358,8 @@ Contact Here 👉 <a href="https://t.me/OFFICIALJADU1" target="_blank">@OFFICIAL
     });
 
     window.addEventListener('mousemove', (e) => {
-      targetX = (e.clientX - window.innerWidth / 2) * -0.08;
-      targetY = (e.clientY - window.innerHeight / 2) * -0.08;
+      targetX = (e.clientX - window.innerWidth / 2) * -0.02;
+      targetY = (e.clientY - window.innerHeight / 2) * -0.02;
     }, { passive: true });
   </script>
 </body>
