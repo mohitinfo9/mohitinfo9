@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mohit | Developer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background: #0d0a08;
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      touch-action: pan-y;
+    }
+
+    /* BGMI Style Ultra Gyro Dynamic Background Wrapper */
+    .bg-wrapper {
+      position: fixed;
+      top: -30%;
+      left: -30%;
+      width: 160vw;
+      height: 160vh;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+
+    .bg-image {
+      width: 100%;
+      height: 100%;
+      background-image: url('2223.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      filter: brightness(0.7) contrast(1.1);
+      transform: scale(1.1);
+    }
+
+    .bg-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 70% 35%, rgba(255, 170, 50, 0.15) 0%, rgba(10, 8, 12, 0.5) 75%, rgba(5, 4, 6, 0.8) 100%);
+    }
+
+    /* Liquid Ripple Touch Effect */
+    .water-ripple {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate3d(-50%, -50%, 0) scale(0.2);
+      box-sizing: border-box;
+      border: 1.5px solid rgba(255, 183, 3, 0.85);
+      background: radial-gradient(circle, rgba(255, 183, 3, 0.12) 0%, rgba(255, 140, 0, 0.04) 40%, transparent 70%);
+      box-shadow: 0 0 15px rgba(255, 183, 3, 0.5), inset 0 0 10px rgba(255, 200, 100, 0.3);
+      animation: modernLiquidRipple 0.65s cubic-bezier(0.1, 0.85, 0.25, 1) forwards;
+      will-change: transform, opacity;
+    }
+
+    .water-ripple::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      transform: translate3d(-50%, -50%, 0) scale(0.6);
+      border: 1px solid rgba(255, 220, 150, 0.6);
+      opacity: 0.8;
+      box-shadow: 0 0 8px rgba(255, 183, 3, 0.4);
+    }
+
+    @keyframes modernLiquidRipple {
+      0% {
+        transform: translate3d(-50%, -50%, 0) scale(0.15);
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.75;
+      }
+      100% {
+        transform: translate3d(-50%, -50%, 0) scale(3.2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    @keyframes tagBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
+    }
+
+    /* Top-Left Gaming Button */
+    .top-left-gaming-btn {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      z-index: 9999;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      transform: translateZ(0);
+      will-change: transform;
+      animation: gentlePulse 3s ease-in-out infinite;
+    }
+
+    .top-left-gaming-btn .rotating-border {
+      position: absolute;
+      inset: -3.5px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 25%, #ffb703 60%, #ffe600 85%, #ffffff 100%);
+      animation: spinBorder 2.8s linear infinite;
+      z-index: -1;
+      will-change: transform;
+    }
+
+    .top-left-gaming-btn img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid #141005;
+    }
+
+    .btn-action-tag-gaming {
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ffb703, #ff8800);
+      color: #000;
+      font-size: 8.5px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      white-space: nowrap;
+      box-shadow: 0 0 10px rgba(255, 183, 3, 0.8);
+      border: 1px solid #fff;
+      pointer-events: none;
+    }
+
+    /* Top-Right Goku Black Button */
+    .top-right-bot-btn {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      z-index: 9999;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      transform: translateZ(0);
+      will-change: transform;
+      animation: gentlePulse 3s ease-in-out infinite 0.75s;
+    }
+
+    .top-right-bot-btn .rotating-border {
+      position: absolute;
+      inset: -3.5px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 25%, #ff1493 60%, #ff80bf 85%, #ffffff 100%);
+      animation: spinBorder 2.8s linear infinite;
+      z-index: -1;
+      will-change: transform;
+    }
+
+    .top-right-bot-btn img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid #140810;
+    }
+
+    .btn-action-tag-pink {
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff1493, #ff007f);
+      color: #fff;
+      font-size: 8.5px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      white-space: nowrap;
+      box-shadow: 0 0 10px rgba(255, 20, 147, 0.85);
+      border: 1px solid #fff;
+      pointer-events: none;
+    }
+
+    /* Content Layout */
+    .content-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Center Avatar */
+    .avatar-wrapper {
+      position: relative;
+      width: 136px;
+      height: 136px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      animation: gentlePulse 2.8s ease-in-out infinite 0.3s;
+    }
+
+    .avatar-wrapper:active {
+      transform: scale(0.93) !important;
+    }
+
+    .avatar-ring-rgb {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #ff0055, #ff9900, #ffe600, #00ff88, #00d4ff, #7b2cbf, #ff0055);
+      animation: spinBorder 3.5s linear infinite;
+      filter: blur(4px);
+      opacity: 0.95;
+      will-change: transform;
+    }
+
+    .avatar-ring-white {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, transparent 35%, rgba(255, 255, 255, 0.5) 70%, #ffffff 95%, #ffffff 100%);
+      animation: spinBorder 2.2s linear infinite reverse;
+      filter: drop-shadow(0 0 10px #ffffff);
+      z-index: 1;
+      will-change: transform;
+    }
+
+    .avatar-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), inset 0 0 12px rgba(0, 0, 0, 0.8);
+      background: #000;
+      z-index: 2;
+    }
+
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-badge {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: 36px;
+      height: 36px;
+      background: rgba(18, 14, 16, 0.95);
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      color: #ffb703;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+      z-index: 3;
+    }
+
+    .center-cta-badge {
+      position: absolute;
+      bottom: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #00f3ff, #00ff88);
+      color: #041219;
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      padding: 4px 14px;
+      border-radius: 14px;
+      white-space: nowrap;
+      box-shadow: 0 0 18px rgba(0, 243, 255, 0.95), 0 4px 10px rgba(0,0,0,0.5);
+      border: 1.5px solid #ffffff;
+      z-index: 5;
+      animation: tagBounce 1.8s infinite ease-in-out;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    h1 {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 15%, #ffb703 60%, #ff5400 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      text-shadow: 0 0 25px rgba(255, 150, 0, 0.4);
+    }
+
+    .tagline {
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: #ffc971;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
+    }
+
+    .bio-desc {
+      font-size: 14px;
+      max-width: 420px;
+      color: #e2e8f0;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      background: rgba(10, 8, 10, 0.4);
+      backdrop-filter: blur(4px);
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 183, 3, 0.2);
+    }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5e1;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(8px); }
+      60% { transform: translateY(4px); }
+    }
+
+    .scroll-indicator i {
+      font-size: 16px;
+      color: #ffb703;
+    }
+
+    /* Sections */
+    .section-wrap {
+      width: 90%;
+      max-width: 600px;
+      margin-bottom: 50px;
+    }
+
+    .learn-card {
+      background: rgba(18, 14, 16, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 183, 3, 0.4);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .learn-card:hover {
+      transform: translateY(-2px);
+      border-color: #ffb703;
+    }
+
+    .learn-card .icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(255, 183, 3, 0.15);
+      border: 1px solid rgba(255, 183, 3, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #ffb703;
+      flex-shrink: 0;
+    }
+
+    .learn-card .text-box h3 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .learn-card .text-box p {
+      font-size: 13px;
+      color: #f1f5f9;
+      line-height: 1.45;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 22px;
+      color: #ffb703;
+      text-shadow: 0 0 15px rgba(255, 183, 3, 0.4);
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+      width: 100%;
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      padding: 15px 18px;
+      background: rgba(15, 12, 16, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      gap: 15px;
+    }
+
+    .social-card .icon-circ {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      flex-shrink: 0;
+    }
+
+    .social-card .info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .social-card .info .name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .social-card .info .handle {
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    .social-card .open-arrow {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .social-card:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 183, 3, 0.1);
+      border-color: #ffb703;
+    }
+
+    .social-card.tg:hover { border-color: #229ED9; }
+    .social-card.wa:hover { border-color: #25D366; }
+    .social-card.ig:hover { border-color: #E1306C; }
+    .social-card.fb:hover { border-color: #1877F2; }
+    .social-card.sc:hover { border-color: #FFFC00; }
+    .social-card.mail:hover { border-color: #EA4335; }
+    .social-card.phone:hover { border-color: #ffb703; }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px 50px;
+      font-size: 12px;
+      color: #cbd5e1;
+      letter-spacing: 1px;
+    }
+
+    @keyframes spinBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Modals Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      perspective: 1200px;
+      transition: opacity 0.35s ease;
+      transform: translateZ(0);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Promotion Modal (3D Pop Animation) */
+    .modal-border-runner-cyan {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 28px;
+      padding: 2.5px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 243, 255, 0.6), 0 0 75px rgba(0, 255, 136, 0.3);
+      transform: rotateX(25deg) scale(0.65) translateY(40px);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease;
+    }
+
+    .modal-overlay.active .modal-border-runner-cyan {
+      transform: rotateX(0deg) scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .modal-border-runner-cyan .rotating-bg {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: conic-gradient(from 0deg, transparent 20%, #00f3ff 50%, #00ff88 80%, #ffffff 100%);
+      animation: spinBorder 3.2s linear infinite;
+      z-index: 0;
+    }
+
+    .cyan-modal-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      background: #061118;
+      border-radius: 26px;
+      padding: 24px 18px;
+      color: #fff;
+    }
+
+    .close-modal-cyan {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 243, 255, 0.2);
+      border: 1px solid #00f3ff;
+      color: #00f3ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      z-index: 5;
+    }
+
+    .modal-title-cyan {
+      font-size: 19px;
+      font-weight: 900;
+      color: #00f3ff;
+      margin-bottom: 14px;
+      text-align: center;
+      padding-right: 25px;
+      text-shadow: 0 0 12px rgba(0, 243, 255, 0.6);
+    }
+
+    .promo-highlight {
+      background: linear-gradient(135deg, rgba(0, 243, 255, 0.15), rgba(0, 255, 136, 0.15));
+      border: 1.5px dashed #00f3ff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .promo-price {
+      font-size: 28px;
+      font-weight: 900;
+      color: #ffe600;
+      text-shadow: 0 0 15px rgba(255, 230, 0, 0.7);
+    }
+
+    .promo-list {
+      list-style: none;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13.5px;
+      color: #e2e8f0;
+    }
+
+    .promo-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    .promo-btn-wrap {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .promo-action-btn {
+      flex: 1;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #fff;
+    }
+
+    .promo-btn-tg {
+      background: #229ED9;
+      box-shadow: 0 0 12px rgba(34, 158, 217, 0.4);
+    }
+
+    .promo-btn-wa {
+      background: #25D366;
+      box-shadow: 0 0 12px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Yellow Gaming Modal (3D Pop) */
+    .modal-border-runner-yellow {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 28px;
+      padding: 2.5px;
+      overflow: hidden;
+      box-shadow: 0 0 35px rgba(255, 183, 3, 0.5);
+      transform: rotateX(20deg) scale(0.7) translateY(30px);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease;
+    }
+
+    .modal-overlay.active .modal-border-runner-yellow {
+      transform: rotateX(0deg) scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .modal-border-runner-yellow .rotating-bg {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: conic-gradient(from 0deg, transparent 25%, #ffb703 55%, #ffe600 80%, #ffffff 100%);
+      animation: spinBorder 3.5s linear infinite;
+      z-index: 0;
+    }
+
+    .yellow-modal-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      background: #140d05;
+      border-radius: 26px;
+      padding: 24px 18px;
+      color: #fff;
+    }
+
+    .close-modal-yellow, .close-modal-pink {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      z-index: 5;
+    }
+
+    .close-modal-yellow {
+      background: rgba(255, 183, 3, 0.2);
+      border: 1px solid #ffb703;
+      color: #ffe600;
+    }
+
+    .modal-title-yellow {
+      font-size: 19px;
+      font-weight: 900;
+      color: #ffe600;
+      margin-bottom: 16px;
+      text-align: center;
+      padding-right: 25px;
+    }
+
+    .game-card {
+      background: rgba(255, 183, 3, 0.08);
+      border: 1px solid rgba(255, 183, 3, 0.25);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .game-card .game-head {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffb703;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .game-card .game-info {
+      font-size: 13px;
+      color: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .copy-chip {
+      background: rgba(255, 183, 3, 0.2);
+      color: #ffe600;
+      border: 1px solid #ffb703;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .game-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 183, 3, 0.2);
+      color: #ffe600;
+      border: 1px solid #ffb703;
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      width: fit-content;
+      margin-top: 4px;
+    }
+
+    /* Pink Bot Modal (3D Pop) */
+    .modal-border-runner-pink {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 28px;
+      padding: 2.5px;
+      overflow: hidden;
+      box-shadow: 0 0 35px rgba(255, 20, 147, 0.5);
+      transform: rotateX(20deg) scale(0.7) translateY(30px);
+      opacity: 0;
+      transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease;
+    }
+
+    .modal-overlay.active .modal-border-runner-pink {
+      transform: rotateX(0deg) scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .modal-border-runner-pink .rotating-bg {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: conic-gradient(from 0deg, transparent 25%, #ff1493 55%, #ff80bf 80%, #ffffff 100%);
+      animation: spinBorder 3.5s linear infinite;
+      z-index: 0;
+    }
+
+    .pink-modal-box {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      background: #14050d;
+      border-radius: 26px;
+      padding: 24px 18px;
+      color: #fff;
+    }
+
+    .close-modal-pink {
+      background: rgba(255, 20, 147, 0.25);
+      border: 1px solid #ff69b4;
+      color: #ffb6c1;
+    }
+
+    .modal-title-pink {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ff80bf;
+      margin-bottom: 14px;
+      text-align: center;
+      padding-right: 25px;
+    }
+
+    .modal-text {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #fce7f3;
+      white-space: pre-line;
+    }
+
+    .modal-text a {
+      color: #ff69b4;
+      font-weight: 700;
+      text-decoration: underline;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(255, 20, 147, 0.18);
+      display: inline-block;
+      margin: 2px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Element with Local Path -->
+  <audio id="bgAudio" loop playsinline preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 3D Parallax Photo Background -->
+  <div class="bg-wrapper" id="parallax-wrapper">
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- Top-Left Gaming Button -->
+  <div class="top-left-gaming-btn" id="openModalGaming" title="Click for Gaming IDs">
+    <div class="rotating-border"></div>
+    <img src="2313.png" alt="Gaming Profile">
+    <div class="btn-action-tag-gaming">🎮 GAME UIDs</div>
+  </div>
+
+  <!-- Top-Right Goku Black Button -->
+  <div class="top-right-bot-btn" id="openModalGoku" title="Click for Bot Hosting Info">
+    <div class="rotating-border"></div>
+    <img src="2306.jpg" alt="Bot Info">
+    <div class="btn-action-tag-pink">🚀 BOT HOST</div>
+  </div>
+
+  <div class="content-container">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="avatar-wrapper" id="openModalPromo" title="Tap to Get Premium Modded APKs">
+        <div class="avatar-ring-rgb"></div>
+        <div class="avatar-ring-white"></div>
+        <div class="avatar-inner">
+          <img src="avatar.jpg" alt="Mohit Profile">
+        </div>
+        <div class="avatar-badge">
+          <i class="fa-brands fa-python"></i>
+        </div>
+        <div class="center-cta-badge">
+          <i class="fa-solid fa-bolt"></i> TAP FOR ₹10 APK
+        </div>
+      </div>
+
+      <h1>Mohit</h1>
+      <p class="tagline">Python Developer & Bot Architect</p>
+      <p class="bio-desc">Building intelligent Telegram bots, custom automated scripts, and high-performance backend tools.</p>
+
+      <div class="scroll-indicator" onclick="document.getElementById('explore-section').scrollIntoView({behavior: 'smooth'})">
+        <span>Scroll to Explore</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- Section 2: Learn Python Callout -->
+    <div class="section-wrap" id="explore-section">
+      <div class="learn-card">
+        <div class="icon-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="text-box">
+          <h3>Want to Master Python?</h3>
+          <p>Beginner to advanced guidance for bot building & logic creation. Direct message me on Telegram or WhatsApp to book 1-on-1 sessions!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Social & Contact Grid -->
+    <div class="section-wrap" style="max-width: 680px;">
+      <h2 class="section-title">Connect & Collab</h2>
+      
+      <div class="social-grid">
+        <a href="https://t.me/OFFICIALJADU1" target="_blank" class="social-card tg">
+          <div class="icon-circ"><i class="fa-brands fa-telegram" style="color: #229ED9;"></i></div>
+          <div class="info">
+            <div class="name">Telegram</div>
+            <div class="handle">@OFFICIALJADU1</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square open-arrow"></i>
+        </a>
+
+        <a href="https://wa.me/918287569318" target="_blank" class="social-card wa">
+          <div class="icon-circ"><i class="fa-brands fa-whatsapp" style="color: #25D366;"></i></div>
+          <div class="info">
+            <div class="name">WhatsApp</div>
+            <div class="handle">+91 82875 69318</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square open-arrow"></i>
+        </a>
+
+        <a href="https://instagram.com/shinigami.voidx" target="_blank" class="social-card ig">
+          <div class="icon-circ"><i class="fa-brands fa-instagram" style="color: #E1306C;"></i></div>
+          <div class="info">
+            <div class="name">Instagram</div>
+            <div class="handle">@shinigami.voidx</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square open-arrow"></i>
+        </a>
+
+        <a href="https://www.facebook.com/shinigami.void" target="_blank" class="social-card fb">
+          <div class="icon-circ"><i class="fa-brands fa-facebook-f" style="color: #1877F2;"></i></div>
+          <div class="info">
+            <div class="name">Facebook</div>
+            <div class="handle">@shinigami.void</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square open-arrow"></i>
+        </a>
+
+        <a href="https://snapchat.com/add/mohit_xyz12" target="_blank" class="social-card sc">
+          <div class="icon-circ"><i class="fa-brands fa-snapchat" style="color: #FFFC00;"></i></div>
+          <div class="info">
+            <div class="name">Snapchat</div>
+            <div class="handle">@mohit_xyz12</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square open-arrow"></i>
+        </a>
+
+        <a href="mailto:contact.mohitofficial.mail@gmail.com" class="social-card mail">
+          <div class="icon-circ"><i class="fa-solid fa-envelope" style="color: #EA4335;"></i></div>
+          <div class="info">
+            <div class="name">Email</div>
+            <div class="handle">contact.mohitofficial.mail</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square open-arrow"></i>
+        </a>
+
+        <a href="tel:+918287569318" class="social-card phone">
+          <div class="icon-circ"><i class="fa-solid fa-phone" style="color: #ffb703;"></i></div>
+          <div class="info">
+            <div class="name">Direct Call</div>
+            <div class="handle">+91 82875 69318</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square open-arrow"></i>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      DESIGNED FOR MOHIT &bull; PYTHON DEVELOPER &copy; 2019
+    </footer>
+
+  </div>
+
+  <!-- 1. Center Avatar: 3D Modded APK Modal -->
+  <div class="modal-overlay" id="promoModalOverlay">
+    <div class="modal-border-runner-cyan">
+      <div class="rotating-bg"></div>
+      <div class="cyan-modal-box">
+        <button class="close-modal-cyan" id="closePromoModalBtn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-title-cyan"> Premium Modded APK Store </div>
+
+        <div class="promo-highlight">
+          <div style="font-size: 13px; color: #a5f3fc; text-transform: uppercase; letter-spacing: 1px;">Any Premium App Available</div>
+          <div class="promo-price">Sirf ₹10 Rupaye</div>
+          <div style="font-size: 12px; color: #cbd5e1; margin-top: 3px;">100% Working & Safe Files</div>
+        </div>
+
+        <ul class="promo-list">
+          <li><i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 16px;"></i> YouTube Premium Mod (Ad-Free & Background Play)</li>
+          <li><i class="fa-solid fa-music" style="color: #00ff88; font-size: 16px;"></i> YouTube Music Premium & Spotify Pro</li>
+          <li><i class="fa-solid fa-sliders" style="color: #00f3ff; font-size: 16px;"></i> Video Editors, VPNs & Utility Apps</li>
+          <li><i class="fa-solid fa-circle-check" style="color: #ffe600; font-size: 16px;"></i> Agar mere paas app available hua toh turant mil jayega!</li>
+        </ul>
+
+        <div class="promo-btn-wrap">
+          <a href="https://t.me/OFFICIALJADU1" target="_blank" class="promo-action-btn promo-btn-tg">
+            <i class="fa-brands fa-telegram"></i> Order on Telegram
+          </a>
+          <a href="https://wa.me/918287569318?text=Bhai%20mujhe%2010%20Rs%20wala%20premium%20app%20chahiye" target="_blank" class="promo-action-btn promo-btn-wa">
+            <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Gaming Modal -->
+  <div class="modal-overlay" id="gamingModalOverlay">
+    <div class="modal-border-runner-yellow">
+      <div class="rotating-bg"></div>
+      <div class="yellow-modal-box">
+        <button class="close-modal-yellow" id="closeGamingModalBtn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-title-yellow"> Gaming Profile & UIDs </div>
+
+        <div class="game-card">
+          <div class="game-head"><i class="fa-solid fa-crosshairs"></i> BGMI (Battlegrounds)</div>
+          <div class="game-info">
+            <span>Name: <b>・MÅのONFIRE</b></span>
+          </div>
+          <div class="game-info">
+            <span>UID: <b id="bgmiUid">55598453540</b></span>
+            <button class="copy-chip" onclick="copyText('bgmiUid')"><i class="fa-regular fa-copy"></i> Copy UID</button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-head"><i class="fa-solid fa-skull"></i> Gangster Miraj City Online</div>
+          <div class="game-info">
+            <span>Name: <b>MOHIT KILLER•</b></span>
+          </div>
+          <div class="game-info">
+            <span>UID: <b id="gangsterUid">555548011386</b></span>
+            <button class="copy-chip" onclick="copyText('gangsterUid')"><i class="fa-regular fa-copy"></i> Copy UID</button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-head"><i class="fa-solid fa-cube"></i> Minecraft Profile</div>
+          <div class="game-info">
+            <span>Gamertag: <b>SoulReaperX8297</b></span>
+          </div>
+          <a href="https://launch.minecraft.net/profile/SoulReaperX8297" target="_blank" class="game-link-btn">
+            <i class="fa-solid fa-up-right-from-square"></i> Open Minecraft Profile
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Bot Modal -->
+  <div class="modal-overlay" id="botModalOverlay">
+    <div class="modal-border-runner-pink">
+      <div class="rotating-bg"></div>
+      <div class="pink-modal-box">
+        <button class="close-modal-pink" id="closeBotModalBtn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-title-pink">🚀 Premium Bot Hosting Service 🚀</div>
+        <div class="modal-text">
+💻 High-Speed & Reliable Bot Hosting
+⚡ 24/7 Uptime • Fast Servers • Secure Environment
+🤖 Perfect for Telegram Bots, Automation & Projects
+
+✨ Features:
+• Stable & Lag-Free Hosting
+• Easy Setup & Support
+• Affordable & Trusted Service
+• 24/7 Monitoring
+
+🔗 Start Hosting Your Bot Now:
+Bot Link 🖇️ - <a href="https://t.me/HOSTINGPAPA_BOT" target="_blank">@HOSTINGPAPA_BOT</a>
+
+📩 Need Help or Custom Hosting?
+Contact Here 👉 <a href="https://t.me/OFFICIALJADU1" target="_blank">@OFFICIALJADU1</a>
+
+🌐 Powering Your Bots With Speed & Stability.
+🔥 Trusted Hosting For Serious Developers.
+
+⚠️ YAH BOT SIRF GROUP MEIN CHALEGA LINK 👇
+<a href="https://t.me/+QVr2WvLIkNQwNTc1" target="_blank">https://t.me/+QVr2WvLIkNQwNTc1</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const wrapper = document.getElementById('parallax-wrapper');
+    const audio = document.getElementById('bgAudio');
+    let audioStarted = false;
+
+    // Force unlock & play audio
+    function playAudioOnTap() {
+      if (!audioStarted && audio) {
+        audio.play().then(() => {
+          audioStarted = true;
+        }).catch(err => {
+          console.warn("Audio unlock pending gesture:", err);
+        });
+      }
+    }
+
+    // BGMI Style Full Gyro Engine with high responsiveness
+    let currentX = 0, currentY = 0;
+    let targetX = 0, targetY = 0;
+
+    function renderEngine() {
+      currentX += (targetX - currentX) * 0.25;
+      currentY += (targetY - currentY) * 0.25;
+      wrapper.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+      requestAnimationFrame(renderEngine);
+    }
+    requestAnimationFrame(renderEngine);
+
+    function handleOrientation(e) {
+      if (e.gamma !== null && e.beta !== null) {
+        const tiltX = Math.max(-60, Math.min(60, e.gamma));
+        const tiltY = Math.max(-60, Math.min(60, e.beta - 30));
+
+        // BGMI like intense gyro sensitivity multiplier
+        targetX = tiltX * 6.0;
+        targetY = tiltY * 6.0;
+      }
+    }
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', handleOrientation, true);
+    }
+
+    function checkGyroPermissions() {
+      if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission().then(state => {
+          if (state === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation, true);
+          }
+        }).catch(console.error);
+      }
+    }
+
+    // Modals
+    const promoBtn = document.getElementById('openModalPromo');
+    const promoModalOverlay = document.getElementById('promoModalOverlay');
+    const closePromoModalBtn = document.getElementById('closePromoModalBtn');
+
+    const gokuBtn = document.getElementById('openModalGoku');
+    const botModalOverlay = document.getElementById('botModalOverlay');
+    const closeBotModalBtn = document.getElementById('closeBotModalBtn');
+
+    const gamingBtn = document.getElementById('openModalGaming');
+    const gamingModalOverlay = document.getElementById('gamingModalOverlay');
+    const closeGamingModalBtn = document.getElementById('closeGamingModalBtn');
+
+    promoBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playAudioOnTap();
+      checkGyroPermissions();
+      promoModalOverlay.classList.add('active');
+    });
+
+    closePromoModalBtn.addEventListener('click', () => {
+      promoModalOverlay.classList.remove('active');
+    });
+
+    promoModalOverlay.addEventListener('click', (e) => {
+      if (e.target === promoModalOverlay) promoModalOverlay.classList.remove('active');
+    });
+
+    gokuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playAudioOnTap();
+      checkGyroPermissions();
+      botModalOverlay.classList.add('active');
+    });
+
+    closeBotModalBtn.addEventListener('click', () => {
+      botModalOverlay.classList.remove('active');
+    });
+
+    botModalOverlay.addEventListener('click', (e) => {
+      if (e.target === botModalOverlay) botModalOverlay.classList.remove('active');
+    });
+
+    gamingBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      playAudioOnTap();
+      checkGyroPermissions();
+      gamingModalOverlay.classList.add('active');
+    });
+
+    closeGamingModalBtn.addEventListener('click', () => {
+      gamingModalOverlay.classList.remove('active');
+    });
+
+    gamingModalOverlay.addEventListener('click', (e) => {
+      if (e.target === gamingModalOverlay) gamingModalOverlay.classList.remove('active');
+    });
+
+    // Enhanced Clipboard Copy Function for Mobile Browsers
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Copied UID: " + text);
+        }).catch(err => {
+          fallbackCopyText(text);
+        });
+      } else {
+        fallbackCopyText(text);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";  // Avoid scrolling to bottom
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          alert("Copied UID: " + text);
+        } else {
+          alert("Failed to copy UID");
+        }
+      } catch (err) {
+        alert("Copy not supported on this browser.");
+      }
+      document.body.removeChild(textArea);
+    }
+
+    // Touch Ripple + Gyro fallback
+    function handleTouch(clientX, clientY) {
+      playAudioOnTap();
+      checkGyroPermissions();
+
+      const ripple = document.createElement('div');
+      ripple.className = 'water-ripple';
+      ripple.style.width = '65px';
+      ripple.style.height = '65px';
+      ripple.style.left = clientX + 'px';
+      ripple.style.top = clientY + 'px';
+      document.body.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 650);
+    }
+
+    window.addEventListener('touchstart', (e) => {
+      playAudioOnTap();
+      checkGyroPermissions();
+      if (!botModalOverlay.classList.contains('active') && 
+          !gamingModalOverlay.classList.contains('active') && 
+          !promoModalOverlay.classList.contains('active')) {
+        const touch = e.touches[0];
+        handleTouch(touch.clientX, touch.clientY);
+      }
+    }, { passive: true });
+
+    window.addEventListener('click', (e) => {
+      playAudioOnTap();
+      checkGyroPermissions();
+      if (!botModalOverlay.classList.contains('active') && 
+          !gamingModalOverlay.classList.contains('active') && 
+          !promoModalOverlay.classList.contains('active')) {
+        handleTouch(e.clientX, e.clientY);
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      targetX = (e.clientX - window.innerWidth / 2) * -0.08;
+      targetY = (e.clientY - window.innerHeight / 2) * -0.08;
+    }, { passive: true });
+  </script>
+</body>
+</html>
